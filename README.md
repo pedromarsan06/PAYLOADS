@@ -117,3 +117,9 @@ Esteja acompanhado de instruções claras de segurança e requisitos de autoriza
 Code para localizar SUID: find / -perm-4000 2>/dev/null
 
 list: GTFOBINS
+
+users_bash: cut -d: -f1 /etc/passwd
+# ou
+getent passwd | cut -d: -f1
+# ou (mostra também UID)
+getent passwd | awk -F: '{printf "%-20s UID:%s\n",$1,$3}'
