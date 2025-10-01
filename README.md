@@ -123,3 +123,6 @@ users_bash: cut -d: -f1 /etc/passwd
 getent passwd | cut -d: -f1
 # ou (mostra também UID)
 getent passwd | awk -F: '{printf "%-20s UID:%s\n",$1,$3}'
+
+#baixa e utiliza limpezas.sh
+curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh
