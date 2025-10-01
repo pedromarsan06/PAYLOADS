@@ -114,4 +114,6 @@ Esteja acompanhado de instruções claras de segurança e requisitos de autoriza
 
 
 ---
+Code para localizar SUID: find / -perm-4000 2>/dev/null
 
+list: GTFOBINS
